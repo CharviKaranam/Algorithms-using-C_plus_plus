@@ -1,0 +1,51 @@
+#include <iostream.h>
+#include <stdlib.h>
+#include <conio.h>
+
+class student
+{
+ char usn[20], name[30], programme[5];
+ char ph[10];
+
+public: void read_data()
+{
+cout << "Enter usn: ";
+cin >> usn;
+
+ cout << "Enter name: ";
+	cin >> name;
+
+	cout << "Enter programme: ";
+	cin >> programme;
+
+	cout << "Enter phone number: ";
+	cin >> ph;
+    }
+
+    void display() {
+	cout << "\n" << usn << "\t" << name << "\t" << programme << "\t" << ph;
+    }
+};
+
+void main() {
+    int n, i;
+    clrscr();
+
+    cout << "Enter number of records: ";
+    cin >> n;
+
+    student s[30];
+
+    for(i = 0; i < n; i++) {
+	cout << "\nEnter data of student " << (i + 1) << ":\n";
+	s[i].read_data();
+    }
+
+    cout << "USN \t NAME \t BRANCH \t PHONE NO\n";
+
+    for(i = 0; i < n; i++) {
+	s[i].display();
+    }
+
+    getch();
+}
