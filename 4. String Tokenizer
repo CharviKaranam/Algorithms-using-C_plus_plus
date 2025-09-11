@@ -1,0 +1,39 @@
+#include <iostream.h>
+#include <stdio.h>
+#include <string.h>
+
+class Customer {
+    char name[30], dob[10];
+
+public:
+    void read() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter DOB (dd/mm/yyyy): ";
+        cin >> dob;
+    }
+
+    void display() {
+        cout << "Customer details are...\n";
+        cout << "Name\tDD\tMM\tYYYY\n";
+        cout << name << "\t";
+
+        char *token;
+	token = strtok(dob, " "); // First token - DD
+
+
+	while (token != NULL)
+	{
+	    cout << token << "\t";
+	    token = strtok(NULL, "/"); // Next tokens - MM, YYYY
+	}
+
+	cout << "\n";
+    }
+};
+
+void main() {
+    Customer c;
+    c.read();
+    c.display();
+}
