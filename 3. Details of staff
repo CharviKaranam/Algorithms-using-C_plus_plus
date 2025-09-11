@@ -1,0 +1,134 @@
+#include <iostream.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <conio.h>
+
+class Staff {
+    char staffID[10], name[30], ph[10];
+    float salary;
+
+public:
+    void read_staff() {
+        cout << "Enter staff ID: ";
+        cin >> staffID;
+        cout << "Enter staff Name: ";
+        cin >> name;
+        cout << "Enter staff Phone number: ";
+        cin >> ph;
+        cout << "Enter staff Salary: ";
+        cin >> salary;
+    }
+
+    void display_staff() {
+        cout << staffID << "\t" << name << "\t" << ph << "\t" << salary << "\t";
+    }
+};
+
+class Teaching : public Staff {
+    char domain[10], pub[20];
+
+public:
+    void read_teaching() {
+        read_staff();
+        cout << "Enter domain: ";
+        cin >> domain;
+        cout << "Enter Publications: ";
+        cin >> pub;
+    }
+
+    void display_teaching() {
+        display_staff();
+        cout << domain << "\t" << pub;
+    }
+};
+
+class Technical : public Staff {
+    char skills[30];
+
+public:
+    void read_technical() {
+        read_staff();
+        cout << "Enter skills: ";
+        cin >> skills;
+    }
+
+    void display_technical() {
+        display_staff();
+        cout << skills;
+    }
+};
+
+class Contract : public Staff {
+    float period;
+
+public:
+    void read_contract() {
+        read_staff();
+        cout << "Enter experience in years: ";
+        cin >> period;
+    }
+
+    void display_contract() {
+        display_staff();
+        cout << period;
+    }
+};
+
+void main() {
+    int i, n, ch;
+    Teaching t[30];
+    Technical t1[30];
+    Contract c[30];
+
+    clrscr();
+    cout << "1. Teaching\n2. Technical\n3. Contract\n";
+    cout << "Enter your choice: ";
+    cin >> ch;
+    cout << "Enter no. of records: ";
+    cin >> n;
+
+    switch (ch) {
+        case 1:
+            for (i = 0; i < n; i++) {
+                cout << "Enter " << (i + 1) << " details:\n";
+                t[i].read_teaching();
+            }
+            cout << "\nTeaching staff details are --\n";
+            cout << "Staff ID\tName\tPhone\tSalary\tDomain\tPublications\n";
+            for (i = 0; i < n; i++) {
+                t[i].display_teaching();
+                cout << "\n";
+            }
+            break;
+
+        case 2:
+            for (i = 0; i < n; i++) {
+                t1[i].read_technical();
+            }
+            cout << "\nTechnical staff details are --\n";
+            cout << "Staff ID\tName\tPhone\tSalary\tSkills\n";
+            for (i = 0; i < n; i++) {
+                t1[i].display_technical();
+                cout << "\n";
+            }
+            break;
+
+        case 3:
+            for (i = 0; i < n; i++) {
+                c[i].read_contract();
+            }
+            cout << "\nContract staff details are --\n";
+            cout << "Staff ID\tName\tPhone\tSalary\tPeriod\n";
+            for (i = 0; i < n; i++) {
+                c[i].display_contract();
+                cout << "\n";
+            }
+            break;
+
+        default:
+            cout << "Invalid choice\n";
+            break;
+    }
+
+    getch();
+}
